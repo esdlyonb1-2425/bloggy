@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+
+    {% for post in posts %}
+
+        <div class="card">
+            <h3 class="card-title">{{ post.title }}</h3>
+            <div class="card-body">
+
+                {% if app.user %}
+
+                    {% if post.author == app.user %}
+
+                    <p><strong>(you wrote this one)</strong></p>
+
+                    {% endif %}
+                {% endif %}
+                <p><strong>Author : {{ post.author.email }}</strong></p>
+                <p>{{ post.content }}</p>
+            </div>
+
+
+        </div>
+
+
+
+
+    {% endfor %}
+
+{% endblock %}
