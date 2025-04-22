@@ -9,7 +9,12 @@
         <div class="card">
             <h3 class="card-title">{{ post.title }}</h3>
             <div class="card-body">
+                {% for image in post.images %}
+                    <div class="d-flex flex-column justify-content-around align-items-center">
+                        <img src="{{ vich_uploader_asset(image, "imageFile") | imagine_filter('showpost') }}" alt="">
+                    </div>
 
+                {% endfor %}
                 {% if app.user %}
 
                     {% if post.author == app.user %}
@@ -20,15 +25,34 @@
                 {% endif %}
                 <p><strong>Author : {{ post.author.email }}</strong></p>
                 <p>{{ post.content }}</p>
-                <a href="{{ path('app_post_show', {id:post.id}) }}" class="btn btn-primary">See</a>
             </div>
 
 
         </div>
 
+        <div>
+            {% for comment in post.comments %}
+
+            <div class="border-dark border">
+                <p>Author : {{ comment.author.email }}</p>
+                <p>{{ comment.content }}</p>
+
+                <a href="{{ path('app_comment_delete', {id:comment.id}) }}" class="btn btn-danger">X</a>
+                <a href="" class="btn btn-warning">E</a>
+
+            </div>
 
 
+            {% endfor %}
+        </div>
 
+    <div>
+        <h4>Add a comment</h4>
+        {{ form_start(form,{'action': path('app_comment', {id:post.id}), 'method': 'POST'}) }}
+        {{ form_widget(form.content) }}
+        <button type="submit" class="btn btn-primary">Comment</button>
+        {{ form_end(form) }}
+    </div>
 
 
 {% endblock %}
