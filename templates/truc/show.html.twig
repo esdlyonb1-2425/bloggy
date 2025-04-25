@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Truc{% endblock %}
+
+{% block body %}
+    <h1>Truc</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ truc.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ truc.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_truc_index') }}">back to list</a>
+
+    <a href="{{ path('app_truc_edit', {'id': truc.id}) }}">edit</a>
+
+    {{ include('truc/_delete_form.html.twig') }}
+{% endblock %}

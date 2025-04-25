@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Truc{% endblock %}
+
+{% block body %}
+    <h1>Edit Truc</h1>
+
+    {{ include('truc/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_truc_index') }}">back to list</a>
+
+    {{ include('truc/_delete_form.html.twig') }}
+{% endblock %}

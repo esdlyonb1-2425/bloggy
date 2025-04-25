@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Truc{% endblock %}
+
+{% block body %}
+    <h1>Create new Truc</h1>
+
+    {{ include('truc/_form.html.twig') }}
+
+    <a href="{{ path('app_truc_index') }}">back to list</a>
+{% endblock %}
