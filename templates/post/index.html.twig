@@ -20,13 +20,17 @@
                 {% endif %}
                 <p><strong>Author : {{ post.author.email }}</strong></p>
                 <p>{{ post.content }}</p>
+                <p><strong>Likes : {{ post.likes|length }}</strong></p>
+                <a href="{{ path('app_like_post', {id:post.id}) }}" class="btn btn-primary">like ou dislike</a>
             </div>
 
 
         </div>
 
 
-
+<script>
+    console.log('coucou')
+</script>
 
     {% endfor %}
 
